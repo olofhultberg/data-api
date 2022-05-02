@@ -11,7 +11,7 @@ const sequelize = new Sequelize(process.env.DATABASE_URL, {
     }
 })
 
-const port = process.env.port || 8080;
+const port = process.env.PORT || 8080;
 
 const SensorData = sequelize.define('sensor-data', {
     serial: {
