@@ -67,12 +67,12 @@ app.post('/data', async (req,res)=>{
 
 
 
-app.listen(port, ()=>{
+app.listen(port, async ()=>{
     try {
         console.log("Starting listening..")
-        // sequelize.authenticate();
+        await sequelize.authenticate();
         // console.log('Connected to database.');
-        // sequelize.sync({ alter:true });
+        await sequelize.sync({ alter:true });
         // console.log('Synchronizing database..');
     } catch (error) {
         console.log('Could not connect to the database', error)
