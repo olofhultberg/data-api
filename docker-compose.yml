@@ -4,8 +4,8 @@ services:
     db:
         image: 'postgres:12'
         environment:
-          - POSTGRES_DB=db
-          - POSTGRES_USER=db
-          - POSTGRES_PASSWORD=AVNS_ucogV5NGNJSzs0n
+          - POSTGRES_DB=ddguildirrrde7
+          - POSTGRES_USER=ytonraiqrvxqth
+          - POSTGRES_PASSWORD=7455eba431309c149474d360a542f486580b64fd7967ef00cb262efc018aa1ea
         ports:
-          - '25060:25060'
+          - '5432:5432'
