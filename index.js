@@ -11,6 +11,8 @@ const sequelize = new Sequelize(process.env.DATABASE_URL, {
     }
 })
 
+const port = process.env.port || 8080;
+
 const SensorData = sequelize.define('sensor-data', {
     serial: {
         type: DataTypes.STRING,
@@ -42,7 +44,9 @@ app.post('/data', async (req,res)=>{
     return;
 });
 
-app.listen({port: 8080}, ()=>{
+
+
+app.listen({port: port}, ()=>{
     try {
         sequelize.authenticate();
         console.log('Connected to database');
