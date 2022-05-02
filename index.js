@@ -31,6 +31,17 @@ const SensorData = sequelize.define('sensor-data', {
 const app =  express();
 app.use(express.json());
 
+app.get('/', async (req,res)=>{
+    try {
+        const allData = []
+        res.status(200).send(allData);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+    return;
+
+});
+
 app.get('/data', async (req,res)=>{
     try {
         const allData = await SensorData.findAll();
