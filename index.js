@@ -32,16 +32,26 @@ const app =  express();
 app.use(express.json());
 
 app.get('/data', async (req,res)=>{
-    const allData = await SensorData.findAll();
-    res.status(200).send(allData);
+    try {
+        const allData = await SensorData.findAll();
+        res.status(200).send(allData);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
     return;
+
 });
 
 app.post('/data', async (req,res)=>{
-    let data = req.body
-    const sensorData = await SensorData.create(data);
-    res.status(201).send(sensorData);
-    return;
+    try {
+        let data = req.body
+        const sensorData = await SensorData.create(data);
+        res.status(201).send(sensorData);
+        return;    
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+    return;  
 });
 
 
@@ -49,9 +59,9 @@ app.post('/data', async (req,res)=>{
 app.listen({port: port}, ()=>{
     try {
         sequelize.authenticate();
-        console.log('Connected to database');
+        console.log('Connected to database.');
         sequelize.sync({ alter:true });
-        console.log('Connected to database');
+        console.log('Synchronizing database..');
     } catch (error) {
         console.log('Could not connect to the database', error)
         
