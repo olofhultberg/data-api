@@ -67,7 +67,7 @@ app.post('/data', async (req,res)=>{
 
 
 
-app.listen({port: port}, ()=>{
+app.listen(port, ()=>{
     try {
         sequelize.authenticate();
         console.log('Connected to database.');
